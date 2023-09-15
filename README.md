@@ -3,3 +3,6 @@ This is a simple patcher for the Sims 3 - it automatically improves performance 
 
 ## Support
 This is as of right now a Windows only patcher.
+
+## Known Bugs
+> The game may not start - this seems to be down to the EA launcher.
