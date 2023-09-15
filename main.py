@@ -9,7 +9,7 @@ if __name__ != "__main__":
 	# This is a small check to prevent this file from being run as a module
 	# It's not really necessary, but it's here to prevent it from being run by accident
 	print("This is running as a module instead of as a script.\nPlease run main.py instead.\nExiting...")
-	exit()
+	sys.exit()
 
 def resolve_lnk(path):
 	# This resolves the path of a shortcut
@@ -17,14 +17,6 @@ def resolve_lnk(path):
 	shell = win32com.client.Dispatch("WScript.Shell")
 	shortcut = shell.CreateShortCut(path)
 	return shortcut.Targetpath
-
-oexit = exit
-
-def exit():
-	if hasattr(sys, 'frozen'):
-		sys.exit()
-	else:
-		oexit()
 
 def header(sub = None):
 	# This clears the console
@@ -110,7 +102,7 @@ def get_game_folder():
 		if filedialog_path == "":
 			# If the user cancels the file dialog, we can exit the program
 			print("No folder selected. Exiting...")
-			exit()
+			sys.exit()
 
 		return filedialog_path
 	
