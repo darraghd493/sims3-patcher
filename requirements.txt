@@ -1,0 +1,5 @@
+psutil
+wincom
+pywin32
+tkinter
+pyinstaller
