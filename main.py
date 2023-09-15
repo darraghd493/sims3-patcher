@@ -278,4 +278,9 @@ if os.path.isfile(os.path.join(bin_folder, "GraphicsRules.sgr")):
 	open(os.path.join(bin_folder, "GraphicsRules.sgr"), "w").write(log_content)
 
 # Create an alert to let the user know that the patching is complete
-askquestion("Sims 3 Patcher", "The Sims 3 has been patched!\nDo you want to run the game?", icon="info")
+if askquestion("Sims 3 Patcher", "The Sims 3 has been patched!\nDo you want to run the game?", icon="info") == "yes":
+	# Run the game
+	os.system(os.path.join(bin_folder, "TS3W.exe"))
+
+# Exit the program
+sys.exit()
