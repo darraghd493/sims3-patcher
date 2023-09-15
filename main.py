@@ -2,6 +2,7 @@
 # If you want to see the code without the comments, see main_min.py
 
 import os, re, time, psutil, winreg, win32com.client
+from tkinter.messagebox import askquestion
 from tkinter import filedialog
 
 if __name__ != "__main__":
@@ -124,6 +125,11 @@ def get_document_folder():
 
 	# We can use os.path.join() to join the documents folder with the rest of the path
 	return os.path.join(documents_folder, "Electronic Arts", "The Sims 3")
+
+# Create a warning before continuing
+if askquestion("Sims 3 Patcher", "Do you want to run the Sims 3 Patcher?", icon="warning") == "no":
+	print("Exiting...")
+	exit()
 
 # This is the main script
 # It will be run when the file is run as a script
@@ -272,3 +278,5 @@ if os.path.isfile(os.path.join(bin_folder, "GraphicsRules.sgr")):
 	print("Writing changes to GraphicsRules.sgr")
 	open(os.path.join(bin_folder, "GraphicsRules.sgr"), "w").write(log_content)
 
+# Create an alert to let the user know that the patching is complete
+askquestion("Sims 3 Patcher", "The Sims 3 has been patched!\nDo you want to run the game?", icon="info")
