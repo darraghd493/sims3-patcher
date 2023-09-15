@@ -1,7 +1,7 @@
 # This is heavily annotated to explain what is happening - this is because the code has some weird behaviour
 # If you want to see the code without the comments, see main_min.py
 
-import os, re, time, psutil, winreg, win32com.client
+import os, re, time, psutil, winreg, win32com.client, sys
 from tkinter.messagebox import askquestion
 from tkinter import filedialog
 
@@ -17,6 +17,14 @@ def resolve_lnk(path):
 	shell = win32com.client.Dispatch("WScript.Shell")
 	shortcut = shell.CreateShortCut(path)
 	return shortcut.Targetpath
+
+oexit = exit
+
+def exit():
+	if hasattr(sys, 'frozen'):
+		sys.exit()
+	else:
+		oexit()
 
 def header(sub = None):
 	# This clears the console
@@ -129,7 +137,6 @@ def get_document_folder():
 # Create a warning before continuing
 if askquestion("Sims 3 Patcher", "Do you want to run the Sims 3 Patcher?", icon="warning") == "no":
 	print("Exiting...")
-	exit()
 
 # This is the main script
 # It will be run when the file is run as a script
